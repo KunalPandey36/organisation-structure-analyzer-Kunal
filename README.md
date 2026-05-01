@@ -23,3 +23,35 @@ Reads employee data from a CSV file and reports:
 
 ```bash
 mvn clean compile exec:java
+```
+
+## Run tests
+
+```bash
+mvn test
+```
+
+## Input
+
+Place your CSV data in `src/main/resources/data.csv`. Example:
+
+```
+Id,firstName,lastName,salary,managerId
+123,Joe,Doe,60000,
+124,Martin,Chekov,45000,123
+125,Bob,Ronstad,47000,123
+300,Alice,Hasacat,50000,124
+305,Brett,Hardleaf,34000,300
+```
+
+## Project structure
+
+```
+src/
+├── main/java/com/company/
+│   ├── App.java              - Entry point
+│   ├── Employee.java         - Data model
+│   ├── CsvReader.java        - CSV parsing
+│   └── SalaryAnalyzer.java   - Analysis logic
+└── test/java/com/company/    - JUnit 5 tests
+```
