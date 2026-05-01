@@ -1,34 +1,25 @@
 # Organisation Structure Analyzer
 
-A Java SE application that reads organisational data from a file and analyzes the company structure.
+Reads employee data from a CSV file and reports:
+- Managers who earn less than they should (below 20% above their direct reports' average)
+- Managers who earn more than they should (above 50% above their direct reports' average)
+- Employees with reporting lines longer than 4 managers to the CEO
+
+## Assumptions
+
+1. A manager's salary should be at least 20% more than the average salary of their direct reports.
+2. A manager's salary should be at most 50% more than the average salary of their direct reports.
+3. Only direct reports are considered, not the full subtree.
+4. A reporting line is "too long" if there are more than 4 managers between the employee and the CEO.
+5. The CSV has a header: `Id,firstName,lastName,salary,managerId`
+6. An employee with no `managerId` is a CEO/root node.
 
 ## Requirements
 
 - Java 21
 - Maven 3.9+
 
-## Build
+## How to run
 
 ```bash
-mvn clean compile
-```
-
-## Run
-
-```bash
-mvn compile exec:java
-```
-
-## Run Tests
-
-```bash
-mvn test
-```
-
-## Project Structure
-
-```
-src/
-├── main/java/com/company/    # Application source code
-└── test/java/com/company/    # JUnit 5 tests
-```
+mvn clean compile exec:java
